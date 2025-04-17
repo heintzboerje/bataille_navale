@@ -211,3 +211,65 @@ let battleship_game() : unit =
 
 (* Appel de la fonction principale pour lancer le jeu *)
 battleship_game();;
+
+(**
+Calcule la liste des positions occupées par un bateau.
+@param p_start position de départ (colonne, ligne)
+@param p_dir direction du bateau ("H" ou "V")
+@param p_length taille du bateau
+@return liste des positions occupées
+@author Nadia Mouacha
+*)
+let rec positions_list(p_start, p_dir, p_length : (char * int) * string * int) : (char * int) list =
+  if p_length <= 0 then
+    []
+  else
+    let l_col : char = fst(p_start)
+    and l_row : int = snd(p_start) in
+
+    let l_next_pos : (char * int) =
+      if p_dir = "H" then
+        (char_of_int (int_of_char l_col + 1), l_row)
+      else if p_dir = "V" then
+        (l_col, l_row + 1)
+      else
+        failwith "Direction invalide : doit être H ou V"
+    in
+
+    p_start :: positions_list(l_next_pos, p_dir, p_length - 1)
+;;
+
+(** 
+@param p_start position de départ du bateau :colonne et ligne
+@param p_direction direction du bateau "H" = horizontal et "V" =  vertical
+@param p_length longueur du bateau à placer
+@param p_grid grille de jeu dans laquelle le bateau sera placé
+@return true si le bateau peut être placé sans dépasser la grille et si une case ne contient pas déja un bateau, false sinon
+@author Zeinebou NIANG
+*)
+
+let can_place_ship (p_start, p_direction, p_length, p_grid, p_params : (char * int) * string * int * t_grid * t_params) : bool =
+  (* Récupérer la liste des positions du bateau *)
+  let l_positions_list = positions_list(p_start, p_direction, p_length) in
+
+  (* Vérifier si toutes les positions sont dans les limites de la grille *)
+  let l_within_bounds =
+    List.for_all (fun (l_col, l_row) ->
+      (* La colonne doit être entre 'A' et la taille de la grille *)
+      int_of_char l_col >= int_of_char 'A' && int_of_char l_col < int_of_char 'A' + !(p_params.grid_size) &&
+      l_row >= 1 && l_row <= !(p_params.grid_size)
+    ) l_positions_list
+  in
+
+  if not l_within_bounds then
+    false
+  else
+    (* Vérifier si toutes les positions sont libres sur la grille *)
+    let l_positions_free = 
+      List.for_all (fun (l_col, l_row) ->
+        (* La cellule doit être vide pour pouvoir placer le bateau *)
+        p_grid.(l_row - 1).(int_of_char l_col - int_of_char 'A') = { pos = (l_col, l_row); state = Empty }
+      ) l_positions_list
+    in
+    l_positions_free
+;;
