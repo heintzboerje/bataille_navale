@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="AP1array.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="CPgraphics" rel="Chapter" href="CPgraphics.html">
+<link title="AP1array" rel="Chapter" href="AP1array.html">
+<link title="Battleship" rel="Chapter" href="Battleship.html"><link title=" Types " rel="Section" href="#1_Types">
+<link title="Functions" rel="Section" href="#1_Functions">
+<title>Battleship</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="AP1array.html" title="AP1array">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Battleship.html">Battleship</a></h1>
+
+<pre><span id="MODULEBattleship"><span class="keyword">module</span> Battleship</span>: <code class="code">sig</code> <a href="Battleship.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Dans ce document est défini le projet à
+rendre en fin de semestre pour l'année de <i>L1
+2024-2025</i>. Le programme est un jeu de bataille navale.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO, Nadia MOUACHA, Zeinebou NIANG, Younes ETTABAA</li>
+<li><b>Version:</b> 2</li>
+</ul>
+</div>
+<hr width="100%">
+<h2 id="1_Types"> Types </h2>
+<pre><code><span id="TYPEt_params"><span class="keyword">type</span> <code class="type"></code>t_params</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_params.margin">margin</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_params.cell_size">cell_size</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_params.message_size">message_size</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_params.grid_size">grid_size</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_params.ship_sizes">ship_sizes</span>&nbsp;: <code class="type">(string * int) list Stdlib.ref</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type contenant les variables globales de
+l'environnement de jeu. Prend en compte la marge</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> version 1</li>
+</ul>
+</div>
+
+
+<pre><code><span id="TYPEt_state"><span class="keyword">type</span> <code class="type"></code>t_state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_state.EMPTY"><span class="constructor">EMPTY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_state.OCCUPIED"><span class="constructor">OCCUPIED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_state.CLICKED"><span class="constructor">CLICKED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_state.TOUCHED"><span class="constructor">TOUCHED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_state.DESTROYED"><span class="constructor">DESTROYED</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type représentant l'état des cellules</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> version 2</li>
+</ul>
+</div>
+
+
+<pre><code><span id="TYPEt_cell"><span class="keyword">type</span> <code class="type"></code>t_cell</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_cell.coord">coord</span>&nbsp;: <code class="type">char * int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_cell.state">state</span>&nbsp;: <code class="type"><a href="Battleship.html#TYPEt_state">t_state</a> Stdlib.ref</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type représentant les cellules</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> version 2</li>
+</ul>
+</div>
+
+
+<pre><span id="TYPEt_grid"><span class="keyword">type</span> <code class="type"></code>t_grid</span> = <code class="type"><a href="Battleship.html#TYPEt_cell">t_cell</a> array array</code> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Type représentant les grilles</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> version 2</li>
+</ul>
+</div>
+
+
+<pre><code><span id="TYPEt_ship"><span class="keyword">type</span> <code class="type"></code>t_ship</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ship.name">name</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ship.positions">positions</span>&nbsp;: <code class="type">(char * int) list</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type représentant un bateau</p>
+
+<p>Type pour représenter l'orientation du bateau</p>
+</div>
+<ul class="info-attributes">
+<li><b>Since</b> version 2 version 2</li>
+</ul>
+</div>
+
+
+<pre><code><span id="TYPEt_direction"><span class="keyword">type</span> <code class="type"></code>t_direction</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_direction.UP"><span class="constructor">UP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_direction.DOWN"><span class="constructor">DOWN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_direction.LEFT"><span class="constructor">LEFT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_direction.RIGHT"><span class="constructor">RIGHT</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEt_where"><span class="keyword">type</span> <code class="type"></code>t_where</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_where.ORDINATEUR"><span class="constructor">ORDINATEUR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_where.JOUEUR"><span class="constructor">JOUEUR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_where.NONE"><span class="constructor">NONE</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEt_battleship"><span class="keyword">type</span> <code class="type"></code>t_battleship</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_battleship.player_grid">player_grid</span>&nbsp;: <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_battleship.computer_grid">computer_grid</span>&nbsp;: <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_battleship.player_ships">player_ships</span>&nbsp;: <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> list</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_battleship.computer_ships">computer_ships</span>&nbsp;: <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> list</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+
+<h2 id="1_Functions">Functions</h2>
+<pre><span id="VALinit_params"><span class="keyword">val</span> init_params</span> : <code class="type">int * int * int * int * (string * int) list * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Initialise les paramètres du jeu.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Zeinebou NIANG</li>
+<li><b>Since</b> version 1</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_margin,p_cell_size,p_message_size,p_grid_size,p_ship_sizes,p_params)</code> : <div class="parameter-desc">
+<code>p_grid_size</code> : taille de la grille, en cellules.</div>
+<div class="parameter-desc">
+<code>p_message_size</code> : hauteur de la zone d'affichage de message, en pixels.</div>
+<div class="parameter-desc">
+<code>p_cell_size</code> : taille des cellules de grille, en pixels.</div>
+<div class="parameter-desc">
+<code>p_margin</code> : valeur de la marge, en pixels.</div>
+</div>
+
+<pre><span id="VALgrid_displayer"><span class="keyword">val</span> grid_displayer</span> : <code class="type">int * int * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction auxiliaire à <a href="Battleship.html#VALdisplay_empty_grids"><code class="code">Battleship.display_empty_grids</code></a>. Dessine une grille et son système de coordonnées.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 1</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_x,p_y,p_cell_size,p_size)</code> : <div class="parameter-desc">
+<code>p_size</code> : taille, en cellules, de la grille.</div>
+<div class="parameter-desc">
+<code>p_cell_size</code> : taille, en pixel, des cellules.</div>
+<div class="parameter-desc">
+<code>p_y</code> : coordonnée y du point inférieur gauche de la grille.</div>
+<div class="parameter-desc">
+<code>p_x</code> : coordonnée x du point inférieur gauche de la grille.</div>
+</div>
+
+<pre><span id="VALdisplay_empty_grids"><span class="keyword">val</span> display_empty_grids</span> : <code class="type">int * int * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Réalise l'affichage des deux grilles du jeu, ainsi que les noms de joueurs.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 1</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_size,p_cell_size,p_margin,p_message_size)</code> : <div class="parameter-desc">
+<code>p_message_size</code> : hauteur de la zone d'affichage de messages, en pixels.</div>
+<div class="parameter-desc">
+<code>p_margin</code> : taille de la marge, en pixels.</div>
+<div class="parameter-desc">
+<code>p_cell_size</code> : taille des cellules, en pixels.</div>
+</div>
+
+<pre><span id="VALcell_index"><span class="keyword">val</span> cell_index</span> : <code class="type">char * int -&gt; int * int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Facilite l'indexage de la matrice pour accéder à une cellule.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> un couple d'entier. Le second représente le tableau où se trouve la cellule ( la rangée )
+ et le premier représente son index dans ce tableau ( la colonne ).</li>
+</ul>
+</div>
+
+<pre><span id="VALgenerate_grid_matrix"><span class="keyword">val</span> generate_grid_matrix</span> : <code class="type">int -&gt; <a href="Battleship.html#TYPEt_grid">t_grid</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Génère une matrice pour représenter une grille.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> une matrice carrée de taille <code class="code">p_grid_size</code></li>
+</ul>
+</div>
+
+<pre><span id="VALplace_ship"><span class="keyword">val</span> place_ship</span> : <code class="type">(char * int) list * <a href="Battleship.html#TYPEt_grid">t_grid</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Place un bateau sur la grille.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_positions,p_grid)</code> : <div class="parameter-desc">
+<code>p_grid</code> : grille dans où il faut placer le bateau.</div>
+<div class="parameter-desc">
+<code>p_positions</code> : cellules que doit bateau à placer.</div>
+</div>
+
+<pre><span id="VALpositions_list"><span class="keyword">val</span> positions_list</span> : <code class="type">(char * int) * <a href="Battleship.html#TYPEt_direction">t_direction</a> * int -&gt; (char * int) list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Calcule la liste des positions occupées par un bateau.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia Mouacha</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> liste des positions occupées</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_start,p_dir,p_length)</code> : <div class="parameter-desc">
+<code>p_length</code> : taille du bateau</div>
+<div class="parameter-desc">
+<code>p_dir</code> : direction du bateau ('l', 'r', 'u', 'd')</div>
+<div class="parameter-desc">
+<code>p_start</code> : position de départ (colonne, ligne)</div>
+</div>
+
+<pre><span id="VALcan_place_ship"><span class="keyword">val</span> can_place_ship</span> : <code class="type">(char * int) * <a href="Battleship.html#TYPEt_direction">t_direction</a> * int * <a href="Battleship.html#TYPEt_grid">t_grid</a> *<br>       <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Détermine si le bateau peut etre placé ou pas</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Zeinebou NIANG</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> true si le bateau peut être placé sans dépasser la grille et si une case ne contient pas déja un bateau, false sinon</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_start,p_direction,p_length,p_grid,p_params)</code> : <div class="parameter-desc">
+<code>p_grid</code> : grille de jeu dans laquelle le bateau sera placé</div>
+<div class="parameter-desc">
+<code>p_length</code> : longueur du bateau à placer</div>
+<div class="parameter-desc">
+<code>p_direction</code> : direction du bateau "H" = horizontal et "V" =  vertical</div>
+<div class="parameter-desc">
+<code>p_start</code> : position de départ du bateau :colonne et ligne</div>
+</div>
+
+<pre><span id="VALauto_placing_ships"><span class="keyword">val</span> auto_placing_ships</span> : <code class="type">(string * int) list * <a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt;<br>       <a href="Battleship.html#TYPEt_ship">t_ship</a> list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Place successivement tous les bateaux à placer dans la grille,
+et renvoit une liste de bateaux placés.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> une liste de tout les bateaux placés sur la grille</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_ships,p_grid,p_param)</code> : <div class="parameter-desc">
+<code>p_grid</code> : grille où il faut placer les bateaux.</div>
+<div class="parameter-desc">
+<code>p_ships</code> : liste contenant les bateaux à placer</div>
+</div>
+
+<pre><span id="VALcell_to_pixel"><span class="keyword">val</span> cell_to_pixel</span> : <code class="type">(char * int) * (int * int) * int * int -&gt; int * int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Transforme les coordonnée d'une cellule en celles du pixel en bas à gauche de cette cellule.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> les coordonnées du pixel inférieur gauche de la cellule.</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_coords,init_coords,p_cell_size,p_grid_size)</code> : <div class="parameter-desc">
+<code>p_grid_size</code> : taille de la grille en pixel.</div>
+<div class="parameter-desc">
+<code>init_coords</code> : coordonnées initiale de la grille.</div>
+<div class="parameter-desc">
+<code>p_coords</code> : coordonnées de la cellules.</div>
+</div>
+
+<pre><span id="VALcolor_cell"><span class="keyword">val</span> color_cell</span> : <code class="type">(char * int) * <a href="CPgraphics.html#TYPEt_color">CPgraphics.t_color</a> * <a href="Battleship.html#TYPEt_params">t_params</a> * <a href="Battleship.html#TYPEt_where">t_where</a> -&gt;<br>       unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Colore une cellule donnée</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 2</li>
+<li><b>Returns</b> Rien colore juste la case.</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_coords,p_color,p_params,p_player)</code> : <div class="parameter-desc">
+<code>p_player</code> : determine dans quelle grille se trouve la cellule à colorier.</div>
+<div class="parameter-desc">
+<code>p_params</code> : paramètres du jeu.</div>
+<div class="parameter-desc">
+<code>p_color</code> : couleur à utiliser poue colorer la case.</div>
+<div class="parameter-desc">
+<code>p_coords</code> : coordonnée de la cellule à colorer.</div>
+</div>
+<p>Scanne la liste de bateau placés et colores le cases qu'ils occupents</p>
+
+<pre><span id="VALdisplay_grid"><span class="keyword">val</span> display_grid</span> : <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_params">t_params</a> * <a href="Battleship.html#TYPEt_where">t_where</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Modifier la fonction display_grid (à l'itération 2)
+Affiche toute la grille selon l’état de chaque cellule.
+Si le joueur est JOUEUR, les bateaux sont affichés en gris.
+Sinon, seuls les effets des tirs sont visibles.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 2</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_grid,p_params,p_player)</code> : <div class="parameter-desc">
+<code>p_player</code> : JOUEUR ou ORDINATEUR.</div>
+<div class="parameter-desc">
+<code>p_params</code> : Paramètres du jeu.</div>
+<div class="parameter-desc">
+<code>p_grid</code> : Matrice des cellules du jeu.</div>
+</div>
+<p>Affiche le message en dessous de la grille</p>
+
+<pre><span id="VALdisplay_message"><span class="keyword">val</span> display_message</span> : <code class="type">string list * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Affiche des messages au joueur.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_message,p_params)</code> : <div class="parameter-desc">
+<code>p_params</code> : paramètres du jeu.</div>
+<div class="parameter-desc">
+<code>p_message</code> : chaine de charactère qu'il faudra afficher au joueur.</div>
+</div>
+
+<pre><span id="VALcell_of_pixel"><span class="keyword">val</span> cell_of_pixel</span> : <code class="type">int * int * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; char * int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Renvoi la cellule où se trouve un pixel donné</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz POLO</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> Un couple (char, int) qui sont les coordonnées de la cellule cliqué
+          renvoi les valeurs ('%', 0) pour un pixel hors grille</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_x,p_y,p_params)</code> : <div class="parameter-desc">
+<code>p_y</code> : coordonné y du pixel en question</div>
+<div class="parameter-desc">
+<code>p_x</code> : coordonné x du pixel en question</div>
+</div>
+
+<pre><span id="VALread_mouse"><span class="keyword">val</span> read_mouse</span> : <code class="type"><a href="Battleship.html#TYPEt_params">t_params</a> -&gt; <a href="Battleship.html#TYPEt_where">t_where</a> * (char * int)</code></pre><div class="info ">
+<div class="info-desc">
+<p>Attends un clic de l'utilisateur et renvoi la grille et la cellule cliquée</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> La grille ainsi que les coordonné de la cellule cliquée</li>
+</ul>
+</div>
+
+<pre><span id="VALcell_is_neighbour"><span class="keyword">val</span> cell_is_neighbour</span> : <code class="type">(char * int) * (char * int) -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Vérifie que 2 cellules sont voisines</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> un tableau de <code class="code">t_cell</code>s. Peut renvoyer des voisins "imaginaires".</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_cell1,p_cell2)</code> : <div class="parameter-desc">
+<code>p_cell2</code> : coordonnées de la cellule 2 (arrivée)</div>
+<div class="parameter-desc">
+<code>p_cell1</code> : coordonnées de la cellule 1 (départ)</div>
+</div>
+
+<pre><span id="VALfind_orientation"><span class="keyword">val</span> find_orientation</span> : <code class="type">(char * int) * (char * int) -&gt; <a href="Battleship.html#TYPEt_direction">t_direction</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Determine l'orientation d'une cellule par rapport à une autre</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> l'orientation de <code class="code">p_cell2</code> par rapport à <code class="code">p_cell1</code></li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_cell1,p_cell2)</code> : <div class="parameter-desc">
+<code>p_cell2</code> : coordonnée de la cellule 2</div>
+<div class="parameter-desc">
+<code>p_cell1</code> : coordonnée de la cellule 1</div>
+</div>
+
+<pre><span id="VALmanual_placing_ships"><span class="keyword">val</span> manual_placing_ships</span> : <code class="type">(string * int) list * <a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt;<br>       <a href="Battleship.html#TYPEt_ship">t_ship</a> list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Permet au joueur de placer ses bateaux sur la grille
+ et renvoie la liste des bateaux placé</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> Une liste contenant les bateaux placés <code class="code">t_ship</code></li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_ship_list,p_grid,p_params)</code> : <div class="parameter-desc">
+<code>p_params</code> : paramètres globaux du jeux</div>
+<div class="parameter-desc">
+<code>p_grid</code> : grille où il faut placer les bateaux</div>
+<div class="parameter-desc">
+<code>p_ship_list</code> : liste des bateau à placer</div>
+</div>
+
+<pre><span id="VALget_neighbors"><span class="keyword">val</span> get_neighbors</span> : <code class="type">char * int -&gt; (char * int) list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Retourne la liste des positions voisines (haut, bas, gauche, droite)
+  autour de la position <code class="code">pos</code>, en s'assurant qu'elles restent dans les limites de la grille.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 4</li>
+<li><b>Returns</b> Une liste de positions voisines directement adjacentes dans la grille.
+          Les positions retournées sont toujours valides (entre 'A' et 'J', lignes 0 à 9).</li>
+</ul>
+</div>
+<p>Fait couler un bateau : met toutes les cellules connectées à celle de départ
+  à l'état DESTROYED (coulé) si elles sont à l'état TOUCHED.</p>
+
+<pre><span id="VALfind_ship"><span class="keyword">val</span> find_ship</span> : <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> list * <a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt;<br>       <a href="Battleship.html#TYPEt_ship">t_ship</a></code></pre>
+<pre><span id="VALupdate_grid"><span class="keyword">val</span> update_grid</span> : <code class="type">(char * int) * <a href="Battleship.html#TYPEt_state">t_state</a> * <a href="Battleship.html#TYPEt_grid">t_grid</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Prend en etrée un cellule et met à jour son état dans la grille</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 4</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_coord,p_state,p_grid)</code> : <div class="parameter-desc">
+<code>p_grid</code> : matrice où se trouve la cellule à modifier</div>
+<div class="parameter-desc">
+<code>p_state</code> : état à modifier</div>
+<div class="parameter-desc">
+<code>p_coord</code> : coordonée grqphique de la cellule</div>
+</div>
+
+<pre><span id="VALsink_ship"><span class="keyword">val</span> sink_ship</span> : <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> * <a href="Battleship.html#TYPEt_grid">t_grid</a> -&gt; unit</code></pre>
+<pre><span id="VALcheck_sunk_ship"><span class="keyword">val</span> check_sunk_ship</span> : <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> * <a href="Battleship.html#TYPEt_grid">t_grid</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Vérifie si un bateau est coulé (toute ses positions sont touchées)</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 4</li>
+<li><b>Returns</b> true si le bateau est coulée false sinon</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_ship,p_grid)</code> : <div class="parameter-desc">
+<code>p_ship</code> : bateau</div>
+</div>
+<p>Fonction récursive qui gère le tir du joueur humain sur la grille de l'ordinateur.
+  Elle attend que le joueur clique sur une cellule valide, traite le tir (touché, manqué ou déjà joué),
+  met à jour l'état de la grille, affiche les couleurs correspondantes et affiche les messages associés.</p>
+
+<pre><span id="VALsink_ship"><span class="keyword">val</span> sink_ship</span> : <code class="type"><a href="Battleship.html#TYPEt_ship">t_ship</a> * <a href="Battleship.html#TYPEt_grid">t_grid</a> -&gt; unit</code></pre><p>Permet à l'ordinateur d'effectuer un tir aléatoire sur la grille du joueur.
+    Tire sur une cellule non touchée ou cliquée et met à jour son état.</p>
+
+<pre><span id="VALcomputer_shoot"><span class="keyword">val</span> computer_shoot</span> : <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_ship">t_ship</a> list * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; unit</code></pre>
+<pre><span id="VALplayer_shoot"><span class="keyword">val</span> player_shoot</span> : <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_ship">t_ship</a> list * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; unit</code></pre>
+<pre><span id="VALhas_alive_ships"><span class="keyword">val</span> has_alive_ships</span> : <code class="type"><a href="Battleship.html#TYPEt_grid">t_grid</a> * <a href="Battleship.html#TYPEt_ship">t_ship</a> list -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Vérifie si un joueur possède encore au moins un bateau non totalement touché.</p>
+
+<p>Parcourt tous les bateaux et leurs positions pour détecter s’il reste 
+    au moins une case qui n’a pas été touchée.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 5</li>
+<li><b>Returns</b> true si au moins un bateau a une case non touchée, false sinon</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_grid,p_ships)</code> : <div class="parameter-desc">
+<code>p_ships</code> : Liste des bateaux du joueur (ou de l’ordinateur)</div>
+<div class="parameter-desc">
+<code>p_grid</code> : Grille du joueur (ou de l’ordinateur)</div>
+</div>
+
+<pre><span id="VALgame_over"><span class="keyword">val</span> game_over</span> : <code class="type"><a href="Battleship.html#TYPEt_battleship">t_battleship</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Détermine si la partie est terminée.</p>
+
+<p>Vérifie si tous les bateaux du joueur ou de l'ordinateur ont été coulés,
+    c'est-à-dire qu’ils n’ont plus de cases non touchées.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 5</li>
+<li><b>Returns</b> true si un des deux joueurs a perdu tous ses bateaux, false sinon</li>
+</ul>
+</div>
+
+<pre><span id="VALall_shoot"><span class="keyword">val</span> all_shoot</span> : <code class="type"><a href="Battleship.html#TYPEt_battleship">t_battleship</a> * <a href="Battleship.html#TYPEt_params">t_params</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Boucle principale des tirs du jeu.</p>
+
+<p>Alterne les tirs entre le joueur et l'ordinateur tant qu’aucun des deux
+    n’a perdu tous ses bateaux.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nadia MOUACHA</li>
+<li><b>Since</b> version 5</li>
+<li><b>Returns</b> Ne retourne rien (effets de bord sur la grille uniquement)</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(p_battleship,p_params)</code> : <div class="parameter-desc">
+<code>p_params</code> : Paramètres du jeu (graphiques, etc.)</div>
+<div class="parameter-desc">
+<code>p_battleship</code> : Structure contenant les grilles et bateaux des deux joueurs</div>
+</div>
+
+<pre><span id="VALinit_battleship"><span class="keyword">val</span> init_battleship</span> : <code class="type"><a href="Battleship.html#TYPEt_params">t_params</a> -&gt; <a href="Battleship.html#TYPEt_battleship">t_battleship</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Prend les paramètres du jeu, place les bateaux de l'ordi et permet au joueur de placer ses bateaux</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Bentz Polo</li>
+<li><b>Since</b> version 3</li>
+<li><b>Returns</b> Un <code class="code">t_battleship</code> qui contient les grilles et les liste des bateaux du joueur et de l'ordi</li>
+</ul>
+</div>
+
+<pre><span id="VALbattleship_game"><span class="keyword">val</span> battleship_game</span> : <code class="type">unit -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction principale du jeu. Lance la fenetre graphique et mets à jour le titre et
+  enclenche le déroulement du jeu.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Zeinebou NIANG, Bentz POLO</li>
+<li><b>Since</b> version 1</li>
+</ul>
+</div>
+</body></html>

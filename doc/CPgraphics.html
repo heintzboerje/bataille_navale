@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="AP1array.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="CPgraphics" rel="Chapter" href="CPgraphics.html">
+<link title="AP1array" rel="Chapter" href="AP1array.html">
+<link title="Battleship" rel="Chapter" href="Battleship.html"><title>CPgraphics</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="AP1array.html" title="AP1array">Next</a>
+</div>
+<h1>Module <a href="type_CPgraphics.html">CPgraphics</a></h1>
+
+<pre><span id="MODULECPgraphics"><span class="keyword">module</span> CPgraphics</span>: <code class="code">sig</code> <a href="CPgraphics.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="VALwait"><span class="keyword">val</span> wait</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="VALopen_graph"><span class="keyword">val</span> open_graph</span> : <code class="type">int * int -&gt; unit</code></pre>
+<pre><span id="VALset_window_title"><span class="keyword">val</span> set_window_title</span> : <code class="type">string -&gt; unit</code></pre>
+<pre><span id="VALclose_graph"><span class="keyword">val</span> close_graph</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALclear_graph"><span class="keyword">val</span> clear_graph</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALresize_window"><span class="keyword">val</span> resize_window</span> : <code class="type">int * int -&gt; unit</code></pre>
+<pre><span id="VALmoveto"><span class="keyword">val</span> moveto</span> : <code class="type">int * int -&gt; unit</code></pre>
+<pre><span id="VALlineto"><span class="keyword">val</span> lineto</span> : <code class="type">int * int -&gt; unit</code></pre>
+<pre><span id="VALplot"><span class="keyword">val</span> plot</span> : <code class="type">int * int -&gt; unit</code></pre>
+<pre><span id="VALcurrent_point"><span class="keyword">val</span> current_point</span> : <code class="type">unit -&gt; int * int</code></pre>
+<pre><span id="VALdraw_poly_line"><span class="keyword">val</span> draw_poly_line</span> : <code class="type">(int * int) array -&gt; unit</code></pre>
+<pre><span id="VALdraw_circle"><span class="keyword">val</span> draw_circle</span> : <code class="type">int * int * int -&gt; unit</code></pre>
+<pre><span id="VALdraw_ellipse"><span class="keyword">val</span> draw_ellipse</span> : <code class="type">int * int * int * int -&gt; unit</code></pre>
+<pre><span id="VALdraw_rect"><span class="keyword">val</span> draw_rect</span> : <code class="type">int * int * int * int -&gt; unit</code></pre>
+<pre><span id="VALfill_rect"><span class="keyword">val</span> fill_rect</span> : <code class="type">int * int * int * int -&gt; unit</code></pre>
+<pre><span id="VALfill_poly"><span class="keyword">val</span> fill_poly</span> : <code class="type">(int * int) array -&gt; unit</code></pre>
+<pre><span id="VALfill_circle"><span class="keyword">val</span> fill_circle</span> : <code class="type">int * int * int -&gt; unit</code></pre>
+<pre><span id="VALfill_ellipse"><span class="keyword">val</span> fill_ellipse</span> : <code class="type">int * int * int * int -&gt; unit</code></pre>
+<pre><span id="VALset_line_width"><span class="keyword">val</span> set_line_width</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="VALdraw_char"><span class="keyword">val</span> draw_char</span> : <code class="type">char -&gt; unit</code></pre>
+<pre><span id="VALdraw_string"><span class="keyword">val</span> draw_string</span> : <code class="type">string -&gt; unit</code></pre>
+<pre><span id="VALset_text_size"><span class="keyword">val</span> set_text_size</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="TYPEt_color"><span class="keyword">type</span> <code class="type"></code>t_color</span> = <code class="type">Graphics.color</code> </pre>
+
+
+<pre><span id="VALblack"><span class="keyword">val</span> black</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALblue"><span class="keyword">val</span> blue</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALred"><span class="keyword">val</span> red</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALgreen"><span class="keyword">val</span> green</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALwhite"><span class="keyword">val</span> white</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALyellow"><span class="keyword">val</span> yellow</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALcyan"><span class="keyword">val</span> cyan</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALmagenta"><span class="keyword">val</span> magenta</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALgrey"><span class="keyword">val</span> grey</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALorange"><span class="keyword">val</span> orange</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALcolor_of_rgb"><span class="keyword">val</span> color_of_rgb</span> : <code class="type">int * int * int -&gt; <a href="CPgraphics.html#TYPEt_color">t_color</a></code></pre>
+<pre><span id="VALset_color"><span class="keyword">val</span> set_color</span> : <code class="type"><a href="CPgraphics.html#TYPEt_color">t_color</a> -&gt; unit</code></pre>
+<pre><span id="VALkey_pressed"><span class="keyword">val</span> key_pressed</span> : <code class="type">unit -&gt; bool</code></pre>
+<pre><span id="VALread_key"><span class="keyword">val</span> read_key</span> : <code class="type">unit -&gt; char</code></pre>
+<pre><span id="VALmouse_pos"><span class="keyword">val</span> mouse_pos</span> : <code class="type">unit -&gt; int * int</code></pre>
+<pre><span id="VALbutton_down"><span class="keyword">val</span> button_down</span> : <code class="type">unit -&gt; bool</code></pre>
+<pre><span id="VALwait_button_down"><span class="keyword">val</span> wait_button_down</span> : <code class="type">unit -&gt; int * int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Attend le prochain clic de sourie et retourne la position de la sourie
+    (si la sourie est hors de la fenêtre graphique, la position sera hors de l'interval 0..size_x()-1, 0..size_y()-1).</p>
+</div>
+</div>
+</body></html>
